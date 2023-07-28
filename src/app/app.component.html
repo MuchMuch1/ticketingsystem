@@ -1,0 +1,28 @@
+<div class="position-fixed w-100 myBg">
+  <header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4 text-white">Very cool website</span>
+    </a>
+
+    <ul class="nav nav-pills ">
+      <li class="nav-item"><a routerLink="/home" class="nav-link text-decoration-none" aria-current="page">Home</a></li>
+      <li class="nav-item"><a routerLink="/customer" class="nav-link text-decoration-none">Create a ticket</a></li>
+      <li class="nav-item"><a routerLink="/employee" class="nav-link text-decoration-none">Employee Login</a></li>
+    </ul>
+  </header>
+</div>
+
+<!-- <table>
+  <tr *ngFor="let t of tickets">
+    <td>{{t.t_id}}</td>
+    <td>{{t.name}}</td>
+    <td>{{t.type}}</td>
+    <td>{{t.desc}}</td>
+    <td>{{t.status}}</td>
+    <td>{{t.priority}}</td>
+  </tr>
+</table> -->
+
+
+  <router-outlet></router-outlet>

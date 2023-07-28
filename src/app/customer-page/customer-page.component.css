@@ -1,0 +1,9 @@
+.pLow {
+    background-color: white;
+}.Med {
+    background-color: rgb(255, 207, 117);
+}.pHigh {
+    background-color: pink;
+}.pCrit {
+    background-color: rgb(156, 31, 83);
+}
