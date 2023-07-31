@@ -1,1 +1,86 @@
-<p>employee-page works!</p>
+<div class="container">
+    <div class="bd-callout bd-callout-info w-50">
+        <h1>We currently have {{ numOfTickets }} Tickets</h1>
+        <section class="border p-2">
+            <h2 class="d-inline">Ticket Status</h2>
+            <span class="text-success"> {{ ticketOpen }}</span> Open
+            <span class="text-warning">{{ ticketPending }}</span> Pending
+            <span class="text-danger">{{ ticketOnHold }}</span> On Hold
+            <span class="text-secondary">{{ ticketClosed }}</span> Closed
+        </section>
+        <section class="border p-2">
+            <h2 class="d-inline">Ticket Priority</h2>
+            <span class="text-secondary"> {{ ticketNo }}</span> Unassigned
+            <span class="text-primary">{{ ticketLow }}</span> Low
+            <span class="text-success">{{ ticketMed }}</span> Medium
+            <span class="text-warning">{{ ticketHigh }}</span> High
+            <span class="text-danger">{{ ticketCrit }}</span> Cricitcal
+        </section>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="col-1">ID</th>
+            <th scope="col" class="col-2">Name</th>
+            <th scope="col" class="col-1">Type</th>
+            <th scope="col" class="col-4">Description</th>
+            <th scope="col" class="col-1">Status</th>
+            <th scope="col" class="col-1"></th>
+            <th scope="col" class="col-3">Date</th>
+            <th scope="col" class="col-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let t of tickets">
+            <tr class="table-striped">
+                <td class="col-1">{{ t.t_id }}</td>
+                <td class="col-2">{{ t.name }}</td>
+                <td class="col-1">{{ t.type }}</td>
+                <td class="col-4">
+                    {{ t.desc }}
+                   <button mat-button (click)="openDialog()" >View Image</button>
+                </td>
+                <td class="col-1">{{ t.status }}</td>
+                <td class="col-1">{{ t.priority }}</td>
+                <td class="col-3">{{ t.date }}</td>
+                <td class="col-2">
+                    <button class="btn btn-secondary btn-sm m-1 w-100" id="btn_{{ t.t_id }}" (click)="findID($event); toggleExpandedRow(t)">Edit</button>
+                    <button class="btn btn-danger btn-sm m-1 w-100" id="btn_{{ t.t_id }}" (click)="findID($event); delete()">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="expandedElement === t" [@detailExpand]="expandedElement === t ? 'expanded' : 'collapsed'">
+              <td [attr.colspan]="8"> 
+                <!-- Edit form is shown when edit button is clicked, opening the expanded section -->
+                    <form [formGroup]="editForm" (ngSubmit)="onEdit()" novalidate>
+                        <h1 class="dsplay-inline">Edit</h1>
+                        <select id="ticketType" formControlName="type" class="form-control form-width">
+                            <option value="">--Select a Type (Optional) --</option>
+                            <option id="btn_edit_Bug" value="Bug">Bug</option>
+                            <option id="btn_edit_Suggestion" value="Suggestion">Suggestion</option>
+                            <option id="btn_edit_Enhancement" value="Enhancement">Enhancement</option>
+                        </select>
+                        <select id="ticketStatus" formControlName="status" class="form-control form-width">
+                            <option value="">--Select a Status--</option>
+                            <option value="Open">Open</option>
+                            <option value="Pending">Pending</option>
+                            <option value="On Hold">On Hold</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                        <select id="ticketSPriority" formControlName="priority" class="form-control form-width">
+                            <option value="">--Select a Priority--</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                        <input type="submit" value="Confirm Edit" class="m-1 btn btn-warning">
+                        <input type="reset" value="Cancel" (click)="hideEditForm()" class="m-1 btn btn-secondary">
+                    </form>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      
+</div>
