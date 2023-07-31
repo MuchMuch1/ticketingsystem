@@ -31,14 +31,15 @@ app.post('/create', (req, res) => {
         desc: req.body.desc,
         status: req.body.status,
         priority: req.body.priority,
-        date: req.body.date
+        date: req.body.date,
+        img: req.body.img
     }
     let sql = "INSERT INTO tickets SET ?";
     db.query(sql, details, (error) => {
         if (error) {
-            console.log("Successfully failed adding record");
+            res.send({status: 'failed', message:'"Successfully failed adding record"'});
         } else {
-            console.log("Successfully added record");
+            res.send({status: 'success', message:'"Successfully added record"'});
         }
     })
 
@@ -71,9 +72,9 @@ app.put('/update/:t_id', (req, res) => {
 
     let query = db.query(sql, (error, result) =>{
         if (error) {
-            console.log("Successfully failed updating record");
+            res.send({status: 'failed', message:'"Successfully failed updating record"'});
         } else {
-            console.log("Successfully updated record");
+            res.send({status: 'success', message:'"Successfully updated record"'});
         }
     })
 })
@@ -83,9 +84,9 @@ app.delete('/delete/:id', (req, res) => {
     let sql = "DELETE FROM tickets WHERE t_id=" +req.params.id +"";
     let query = db.query(sql, (error) =>{
         if (error) {
-            console.log("Successfully failed deleting record");
+            res.send({status: 'failed', message:'"Successfully failed deleting record"'});
         } else {
-            console.log("Successfully deleted record");
+            res.send({status: 'success', message:'"Successfully deleted record"'});
         }
     })
 })
