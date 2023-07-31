@@ -1,28 +1,37 @@
 <div class="position-fixed w-100 myBg">
-  <header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+  <header class="container d-flex flex-wrap justify-content-center py-3 ">
+    <a href="/" class="col d-flex align-items-center link-body-emphasis text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4 text-white">Very cool website</span>
     </a>
 
-    <ul class="nav nav-pills ">
-      <li class="nav-item"><a routerLink="/home" class="nav-link text-decoration-none" aria-current="page">Home</a></li>
-      <li class="nav-item"><a routerLink="/customer" class="nav-link text-decoration-none">Create a ticket</a></li>
-      <li class="nav-item"><a routerLink="/employee" class="nav-link text-decoration-none">Employee Login</a></li>
-    </ul>
+    <p class="col text-white">We have <span class="text-success">cool </span><span class="text-warning">new </span><span class="text-danger"> updates</span></p>
+
   </header>
 </div>
 
-<!-- <table>
-  <tr *ngFor="let t of tickets">
-    <td>{{t.t_id}}</td>
-    <td>{{t.name}}</td>
-    <td>{{t.type}}</td>
-    <td>{{t.desc}}</td>
-    <td>{{t.status}}</td>
-    <td>{{t.priority}}</td>
-  </tr>
-</table> -->
+<div class="big-logo-bar">
+    
+  <img class="w-100 mt-5" alt="hackerman" 
+  src="https://i.imgur.com/BWHDgyy.jpg"> 
 
+</div>
+
+<div class="w-100 myBg d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <ul class="nav nav-pills text-decoration-none">
+      <li class="nav-item text-success"><a routerLink="/home" class="nav-link" aria-current="page">Home</a></li>
+      <li class="nav-item text-warning"><a routerLink="/customer" class="nav-link">Create a ticket</a></li>
+      <li class="nav-item text-danger"><a routerLink="/employee" class="nav-link">Employee Login</a></li>
+    </ul>
+</div>
 
   <router-outlet></router-outlet>
+
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<footer class="w-100 myBg d-flex flex-wrap justify-content-center py-3">
+  <ul class="nav nav-pills text-decoration-none">
+    <li class="nav-item text-success"><a routerLink="/home" class="nav-link" aria-current="page">Home</a></li>
+    <li class="nav-item text-warning"><a routerLink="/customer" class="nav-link">Create a ticket</a></li>
+    <li class="nav-item text-danger"><a routerLink="/employee" class="nav-link">Employee Login</a></li>
+  </ul>
+</footer>
