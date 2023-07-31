@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {NgIf} from '@angular/common';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     NgIf,
     MatDialogModule,
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
